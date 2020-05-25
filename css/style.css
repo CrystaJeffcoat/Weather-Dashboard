@@ -38,6 +38,10 @@
     min-width: 125px;
  }
 
+ #searchbar {
+    font-size: 18px;
+ }
+
  @media screen and (min-width: 960px) {
     #sidebar {
         min-width: 250px;
@@ -55,6 +59,24 @@
         width: 80%;
         margin-right: 10px;
         margin-bottom: 10px;
+    }
+
+    #searchbar input {
+        width:70%;
+        float: left;
+        border: none;
+    }
+
+    #searchbar button {
+        width: 20%;
+        float: left;
+        border: none;
+        background-color: none;;
+    }
+    
+    #searchbar::after {
+        content: "";
+        clear: both;
     }
 }
 
