@@ -70,15 +70,47 @@ function getWeather() {
 
     currentCityEl.text(cityName);
     $.ajax({
+
         url: "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial&appid=" + apiKey,
         method: "GET"
-        }).then(function(data){
-            currentWeatherData = data;
-            getCurrentWeather();
-        });
+
+    }).then(function(data){
+
+        currentWeatherData = data;
+
+        getCurrentWeather();
+        getForecast();
+
+    });
 };
 
-function getForecast() {
+function getCurrentWeather(){
+    
+    temp = parseInt(currentWeatherData.main.temp);
+    humidity = currentWeatherData.main.humidity
+    windSpeed = currentWeatherData.wind.speed.toFixed(1)
+    uvIndex = forecastData//get forecast data
+
+    // append data to page
+    console.log(temp, humidity, windSpeed)
+    
+};
+
+function getForecast(){
+
+    lat = currentWeatherData.coord.lat;
+    lon = currentWeatherData.coord.lon;
+
+    $.ajax({
+
+        url: "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=current,minutely,hourly&appid=" + apiKey,
+        method: "GET"
+
+    }).then(getForecastData);
+
+}
+
+function getForecastData(){
 
     var forecast = {
         "day-1":[
@@ -98,17 +130,5 @@ function getForecast() {
         ]
         
     };
-};
 
-function getCurrentWeather(){
-    
-    var currentWeather = {
-        "temp": currentTemp,
-        "humidity": currentHum,
-        "windSpeed": currentHum,
-        "uvIndex": currentUV
-    }
-
-    
-};
-
+}
