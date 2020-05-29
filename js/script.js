@@ -6,6 +6,8 @@ var currentDateEl   = $("#current-date");
 var currentDate     = moment().format("dddd, MMMM Do YYYY");
 currentDateEl.text(currentDate);
 
+var weatherData;
+
 // Get recent searches from local storage and sets values to recentCityArr
 getRecentCity();
 
@@ -60,15 +62,9 @@ function getWeather() {
     $.ajax({
         url: "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=imperial&appid=" + apiKey,
         method: "GET"
-        }).then(handleResponse);
-
-};
-
-// gets information from data
-function handleResponse(data){
-
-    console.log(data);
-
+        }).then(function(data) {
+            weatherData = data;
+        });
 };
 
 function getForecast() {
@@ -99,6 +95,14 @@ function getCurrentWeather(){
         "temp": currentTemp,
         "humidity": currentHum,
         "windSpeed": currentHum,
-        "uvIndex": currentUV}
+        "uvIndex": currentUV
+    }
+
+    lat = data.city.coord.lat;
+    lon = data.city.coord.lon;
+
+};
+
+function getUVindex(){
 
 }
