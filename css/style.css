@@ -42,6 +42,7 @@
     font-size: 18px;
  }
 
+
  @media screen and (min-width: 960px) {
     #sidebar {
         min-width: 250px;
