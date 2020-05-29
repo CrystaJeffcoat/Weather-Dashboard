@@ -55,11 +55,12 @@ $("#recent-search").click(function() {
 
 });
 
-//currentCityEl.text(cityName);
+
 function displayWeather() {
+    currentCityEl.text(cityName);
     //var queryURL = queryURLbase + cityName + "&mode=xml&units=metric&cnt=7&appid=" + apiKey
     $.ajax({
-        url: "http://samples.openweathermap.org/data/2.5/weather?q=London&appid=439d4b804bc8187953eb36d2a8c26a02",
+        url: "https://samples.openweathermap.org/data/2.5/weather?q=London&appid=" + apiKey,
         method: "GET"
         }).then(function(response) {
         console.log(response);
