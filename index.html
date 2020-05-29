@@ -21,17 +21,11 @@
             <nav class="container" id="sidebar">
                 <div class="sidebar-header">
                     <p>Search for a City:
-                    <form id="searchbar">
-                        <input name="search" type="text" placeholder="search...">
-                        <button type="submit"><i class="fa fa-search"></i></button>
-                    </form>
+                        <input id="searchbar" type="search" placeholder="search...">
                     </p>
-                    
+
                     <div id="recent-search">
-                        <div>recent</div>
-                        <hr>
-                        <div>recent</div>
-                        <hr>
+                        
                     </div>
                 </div>
             </nav>
@@ -39,7 +33,11 @@
             <div id="main-content">
                 <div class="container">
                     <div class="card border-light mb-3">
-                        <div class="card-header" id="current-city">City (date)</div>
+                        <div class="card-header">
+                            <p id="current-city">khsgk</p>
+                            <p id="current-date" style="font-size: 16px;">dfga</p>
+                        </div>
+
                         <div class="card-body row">
                           <div class="col-6">
                             <div id="current-temp">Temperature: 90</div>
@@ -120,7 +118,8 @@
                 </div>
             </div>
         </div>
-
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="js/script.js"></script>
     </body>
 </html>
