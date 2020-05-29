@@ -1,4 +1,4 @@
-var cityName        = "New York City"
+var cityName;
 var recentCityArr   = [];
 var apiKey          = "0ff77b1f4fc50fdb94490d823d0b5627"
 var currentCityEl   = $("#current-city");
@@ -6,12 +6,14 @@ var currentDateEl   = $("#current-date");
 var currentDate     = moment().format("dddd, MMMM Do YYYY");
 currentDateEl.text(currentDate);
 
-var weatherData;
+var currentWeatherData;
+var forecastData;
 
 // Get recent searches from local storage and sets values to recentCityArr
 getRecentCity();
 
 function getRecentCity() {
+
     if (localStorage.length !== 0) {
         recentCityArr = localStorage.getItem("City").split(",");
         for (i = 0; i < recentCityArr.length; i++) {
@@ -22,6 +24,14 @@ function getRecentCity() {
             }
         }
     }
+    if (recentCityArr.length !== 0) {
+
+        cityName = recentCityArr[recentCityArr.length -1];  
+    }else {
+
+        cityName = "New York";
+    }
+    getWeather();
 };
 
 // When a city is searched...
@@ -60,10 +70,11 @@ function getWeather() {
 
     currentCityEl.text(cityName);
     $.ajax({
-        url: "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=imperial&appid=" + apiKey,
+        url: "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial&appid=" + apiKey,
         method: "GET"
-        }).then(function(data) {
-            weatherData = data;
+        }).then(function(data){
+            currentWeatherData = data;
+            getCurrentWeather();
         });
 };
 
@@ -98,11 +109,6 @@ function getCurrentWeather(){
         "uvIndex": currentUV
     }
 
-    lat = data.city.coord.lat;
-    lon = data.city.coord.lon;
-
+    
 };
 
-function getUVindex(){
-
-}
