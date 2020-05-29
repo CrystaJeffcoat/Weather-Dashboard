@@ -1,8 +1,6 @@
 var cityName        = "New York City"
 var recentCityArr   = [];
 var apiKey          = "0ff77b1f4fc50fdb94490d823d0b5627"
-//var queryURLbase    = "https://samples.openweathermap.org/data/2.5/forecast/daily?q="
-
 var currentCityEl   = $("#current-city");
 var currentDateEl   = $("#current-date");
 var currentDate     = moment().format("dddd, MMMM Do YYYY");
@@ -33,7 +31,7 @@ $("#searchbar").on("search", function() {
     this.value = "";
     localStorage.setItem("City", recentCityArr);
     recentSearch();
-    //display weather
+    displayWeather();
 });
 
 // Creates a <div> for new search
@@ -57,13 +55,17 @@ $("#recent-search").click(function() {
 
 
 function displayWeather() {
-    currentCityEl.text(cityName);
-    //var queryURL = queryURLbase + cityName + "&mode=xml&units=metric&cnt=7&appid=" + apiKey
-    $.ajax({
-        url: "https://samples.openweathermap.org/data/2.5/weather?q=London&appid=" + apiKey,
-        method: "GET"
-        }).then(function(response) {
-        console.log(response);
 
-    });
-}
+    currentCityEl.text(cityName);
+    $.ajax({
+        url: "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=imperial&appid=" + apiKey,
+        method: "GET"
+        }).then(handleResponse);
+
+};
+
+function handleResponse(data){
+
+    console.log(data);
+
+};
