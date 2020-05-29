@@ -31,7 +31,7 @@ $("#searchbar").on("search", function() {
     this.value = "";
     localStorage.setItem("City", recentCityArr);
     recentSearch();
-    displayWeather();
+    getWeather();
 });
 
 // Creates a <div> for new search
@@ -49,12 +49,12 @@ $("#recent-search").click(function() {
     cityName = event.target.innerHTML;
     console.log(cityName);
 
-    displayWeather();
+    getWeather();
 
 });
 
 
-function displayWeather() {
+function getWeather() {
 
     currentCityEl.text(cityName);
     $.ajax({
@@ -64,8 +64,41 @@ function displayWeather() {
 
 };
 
+// gets information from data
 function handleResponse(data){
 
     console.log(data);
 
 };
+
+function getForecast() {
+
+    var forecast = {
+        "day-1":[
+            day, temp, humidity
+        ],
+        "day-2":[
+            day, temp, humidity
+        ],
+        "day-3":[
+            day, temp, humidity
+        ],
+        "day-4":[
+            day, temp, humidity
+        ],
+        "day-4":[
+            day, temp, humidity
+        ]
+        
+    };
+};
+
+function getCurrentWeather(){
+    
+    var currentWeather = {
+        "temp": currentTemp,
+        "humidity": currentHum,
+        "windSpeed": currentHum,
+        "uvIndex": currentUV}
+
+}
