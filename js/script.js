@@ -95,11 +95,9 @@ function getCurrentData(){
     $("#current-humidity").text( "Humidity: " + humidity + "%" )
     $("#current-wind").text( "Wind Speed: " + windSpeed + " MPH" )
     $("#current-uv").text( uvIndex )
-    
-
-
     $("#current-img").attr("src", "http://openweathermap.org/img/wn/" + icon + "@2x.png");
     
+    styleUVIndex(uvIndex);
 };
 
 function getForecast(){
@@ -150,3 +148,25 @@ function convertUnix(dt) {
     return day;
 }
     
+function styleUVIndex(uv){
+    var color;
+
+    if (uv < 3) {
+        color = "rgba(136, 223, 136, 0.5)"
+    }
+    else if (uv < 6) {
+        color = "rgba(255, 255, 0, 0.637)"
+    }
+    else if (uv < 8) {
+        color = "rgba(255, 166, 0, 0.719)"
+    }
+    else if (uv < 11) {
+        color = "rgba(238, 54, 54, 0.63)"
+    }
+    else {
+        color = "rgba(122, 19, 122, 0.616)"
+    }
+
+    $("#current-uv").css("background-color", color);
+
+}
