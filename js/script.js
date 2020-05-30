@@ -78,21 +78,18 @@ function getWeather() {
 
         currentWeatherData = data;
 
-        getCurrentWeather();
         getForecast();
 
     });
 };
 
-function getCurrentWeather(){
+function getCurrentData(){
     
     temp = parseInt(currentWeatherData.main.temp);
     humidity = currentWeatherData.main.humidity
     windSpeed = currentWeatherData.wind.speed.toFixed(1)
-    uvIndex = forecastData//get forecast data
-
+    uvIndex = forecastData.daily[0].uvi;
     // append data to page
-    console.log(temp, humidity, windSpeed)
     
 };
 
@@ -103,32 +100,44 @@ function getForecast(){
 
     $.ajax({
 
-        url: "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=current,minutely,hourly&appid=" + apiKey,
+        url: "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&exclude=current,minutely,hourly&appid=" + apiKey,
         method: "GET"
 
     }).then(getForecastData);
 
 }
 
-function getForecastData(){
+function getForecastData(data){
 
-    var forecast = {
-        "day-1":[
-            day, temp, humidity
-        ],
-        "day-2":[
-            day, temp, humidity
-        ],
-        "day-3":[
-            day, temp, humidity
-        ],
-        "day-4":[
-            day, temp, humidity
-        ],
-        "day-4":[
-            day, temp, humidity
-        ]
-        
-    };
+    forecastData = data;
+    getCurrentData();
+
+    for (var i = 1; i < 6; i++) {
+        var k = forecastData.daily[i];
+        var j = $('div[value="' + i + '"]')[0].children
+
+        day = convertUnix(k.dt);
+        icon = k.weather[0].icon;
+        temp = parseInt(k.temp.day);
+        humidity = k.humidity;
+
+        // append to page
+        j[0].innerHTML = day 
+        j[2].setAttribute("src", "http://openweathermap.org/img/wn/" + icon + "@2x.png");
+        j[4].innerHTML = "Temp: " + temp + "&#8457"
+        j[6].innerHTML = "Humidity: " + humidity + "%"
+
+    }
 
 }
+
+function convertUnix(dt) {
+
+    var unix = dt
+    var mili = unix * 1000
+    var dateObj = new Date(mili)
+    day = dateObj.toLocaleString("en-us", {weekday: "long"})
+
+    return day;
+}
+    
