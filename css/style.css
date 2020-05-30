@@ -22,10 +22,6 @@
     padding: 10px 0;
 }
 
-#current-uv {
-    background-color: red;
-}
-
 .forecast {
     font-size: 14px;
     background-color: rgba(31, 111, 230, 0.932);
