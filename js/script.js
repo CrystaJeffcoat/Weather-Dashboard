@@ -85,11 +85,20 @@ function getWeather() {
 
 function getCurrentData(){
     
-    temp = parseInt(currentWeatherData.main.temp);
-    humidity = currentWeatherData.main.humidity
-    windSpeed = currentWeatherData.wind.speed.toFixed(1)
-    uvIndex = forecastData.daily[0].uvi;
-    // append data to page
+    var temp        = parseInt(currentWeatherData.main.temp);
+    var humidity    = currentWeatherData.main.humidity
+    var windSpeed   = currentWeatherData.wind.speed.toFixed(1)
+    var uvIndex     = forecastData.daily[0].uvi;
+    var icon        = forecastData.daily[0].weather[0].icon;
+
+    $("#current-temp").text( "Temperature: " + temp + "\xB0")
+    $("#current-humidity").text( "Humidity: " + humidity + "%" )
+    $("#current-wind").text( "Wind Speed: " + windSpeed + " MPH" )
+    $("#current-uv").text( uvIndex )
+    
+
+
+    $("#current-img").attr("src", "http://openweathermap.org/img/wn/" + icon + "@2x.png");
     
 };
 
