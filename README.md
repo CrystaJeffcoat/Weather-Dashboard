@@ -24,5 +24,5 @@ Link to [application](https://crystajeffcoat.github.io/Weather-Dashboard/).
 
 
 ## Image of deployed app
-![Alt text](/assets/weather-Dashboard.png)
+![Alt text](/assets/weather Dashboard.png)
 
