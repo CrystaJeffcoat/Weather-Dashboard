@@ -20,9 +20,9 @@ An application that tells you the current weather, and the forecast for the next
 
 ```
 
-- Link to [application](https://crystajeffcoat.github.io/Weather-Dashboard/).
+**Link to [application](https://crystajeffcoat.github.io/Weather-Dashboard/).
 
 ## Image of deployed app
 
-![image](assets/weather Dashboard.png)
+![image](Weather-Dashboard/assets/weather Dashboard.png)
 
