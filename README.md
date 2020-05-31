@@ -2,6 +2,8 @@
 
 An application that tells you the current weather, and the forecast for the next five days.
 
+Link to [application](https://crystajeffcoat.github.io/Weather-Dashboard/).
+
 ## How it works
 
 ```
@@ -20,9 +22,7 @@ An application that tells you the current weather, and the forecast for the next
 
 ```
 
-**Link to [application](https://crystajeffcoat.github.io/Weather-Dashboard/).
 
 ## Image of deployed app
-
-![image](Weather-Dashboard/assets/weather Dashboard.png)
+![Alt text](/assets/weather Dashboard.png)
 
