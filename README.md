@@ -24,5 +24,5 @@ An application that tells you the current weather, and the forecast for the next
 
 ## Image of deployed app
 
-[!image](assets/weather Dashboard.png)
+[!alt image](assets/weather Dashboard.png)
 
